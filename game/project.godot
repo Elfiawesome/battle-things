@@ -11,5 +11,30 @@ config_version=5
 [application]
 
 config/name="Battle Things"
+config/description="Battle Things"
+run/main_scene="uid://b5jbhsnerjyi5"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=480
+
+[file_customization]
+
+folder_colors={
+"res://asset/": "blue",
+"res://client/": "teal",
+"res://common/": "purple",
+"res://server/": "red"
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
