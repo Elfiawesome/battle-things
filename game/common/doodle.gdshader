@@ -58,9 +58,6 @@ void fragment() {
     // Apply the tint color uniform
     tex_color *= tint_color;
 
-    // Multiply by the vertex color (allows modulation from Sprite2D node)
-    tex_color *= COLOR;
-
     // Set the final pixel color
     COLOR = tex_color;
 }
