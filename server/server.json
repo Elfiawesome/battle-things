@@ -1,4 +1,7 @@
 {
     "version": "0.0.1",
-    "description": ""
+    "description": "",
+    "registry": {
+        "units": "/data/units/unit_registry.json"
+    }
 }
