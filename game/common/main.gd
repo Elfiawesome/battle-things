@@ -1,18 +1,34 @@
 extends Node
 
-const ENTRYPOINT := "https://raw.githubusercontent.com/Elfiawesome/battle-things/refs/heads/main/server/"
-
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-var http_req: HTTPRequest = HTTPRequest.new()
+var req: Req
+var timer := Timer.new()
 
 func _ready() -> void:
-	add_child(http_req)
-	http_req.request_completed.connect(_on_request_completed)
-	http_req.request(ENTRYPOINT + "asset/leaf.png")
+	req = Req.new()
+	add_child(req)
+	
+	_on_timer()
+	add_child(timer)
+	timer.start(.5)
+	timer.timeout.connect(_on_timer)
 
-func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	var image := Image.new()
-	image.load_png_from_buffer(body)
-	var image_texture := ImageTexture.create_from_image(image)
-	sprite_2d.texture = image_texture
+func _on_timer() -> void:
+	var image_list := [
+		"bagdle.png",
+		"batts.png",
+		"dark_matter.png",
+		"end_of_the_day_cup.png",
+		"fire.png",
+		"keyboard.png",
+		"king_of_snake.png",
+		"leaf.png",
+		"nature_ghost_soul.png",
+		"sampan.png",
+		"usb_charger.png",
+	]
+	req.get_image_asset(image_list.pick_random(),
+		func(texture: ImageTexture) -> void:
+			sprite_2d.texture = texture
+	)
