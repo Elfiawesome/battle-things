@@ -27,6 +27,7 @@ func _on_timer() -> void:
 		"nature_ghost_soul.png",
 		"sampan.png",
 		"usb_charger.png",
+		"threeheaddragon.png"
 	]
 	req.get_image_asset(image_list.pick_random(),
 		func(texture: ImageTexture) -> void:
