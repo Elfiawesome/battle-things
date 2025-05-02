@@ -13,7 +13,7 @@ func get_image_asset(asset_file: String, callable: Callable) -> void:
 	add_child(http_req)
 	http_req.request_completed.connect(
 		func(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-			print("result: " + str(_result) + " respcode: " + str(_response_code) + "from requsting " + asset_file)
+			print("result: %s response_code: %s asset_file: %s" % [_result, _response_code, asset_file])
 			var image := Image.new()
 			image.load_png_from_buffer(body)
 			var image_texture := ImageTexture.create_from_image(image)
